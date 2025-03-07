@@ -1,0 +1,181 @@
+%%-----------------------------------------------------------------------------
+%% Technische Hochschule Ingolstadt 
+%%
+%% To be used as style template for a Bachelor's/Master's Thesis in the 
+%% Faculty of Electrical Engineering and Information Technology
+%%
+%% by Prof. Dr.-Ing. Michael Mecking  
+%%-----------------------------------------------------------------------------
+
+\documentclass[11pt, titlepage, english, a4paper]{report}
+
+\usepackage[top=1.2in, bottom=1.4in, inner=1.1in, outer=1.1in]{geometry}
+
+
+\usepackage[utf8]{inputenc}         %% Support for UTF-8 input encoding
+\usepackage[T1]{fontenc}            %% 8-bit font encoding... more glyphs... 
+                                    %% easier copy & paste from the output PDF
+\usepackage[english]{babel}         %% English document with English settings
+\usepackage{titlesec}               %% change of appearance of chapters
+\usepackage{fancyhdr,lipsum}        %% Control of headers and footers
+\usepackage{lmodern}                %% Modern font family
+
+\usepackage{tocbibind}              %% Ensures appendices, bibliograph appear in ToC
+\usepackage{algorithmic}            %% Number of commands for typesetting popular algorithmic constructs
+\usepackage{listings}               %% Typeset programming code within LaTeX
+\usepackage{longtable}              %% Write tables that continue to the next page
+\usepackage{float}                  %% Prevents repositioning of tables using [H]
+
+\usepackage{amsmath,bm}             %% AMS math symbols and bold math
+\usepackage{amsbsy}                 %% Bold mathematics symbols where appropriate fonts exist
+\usepackage{amsfonts}               %% Additional mathematical fonts
+\usepackage{amssymb}                %% Extra mathematical symbols
+\usepackage{eulervm}                %% Don Knuth's beautiful (my favorite!) font
+\usepackage{fixmath}                %% Uppercase Greek be typeset in italic style
+
+\usepackage[pdftex]{graphicx}       %% Include graphics in PDF mode
+\usepackage[pdftex]{xcolor}         %% Handle colors in PDF mode
+\usepackage[autostyle]{csquotes}    %% Quotation according to language requirements
+\usepackage{units}                  %% Proper spacing for units
+\usepackage{hhline}                 %% More control over table border lines
+\usepackage{titling}                %% Control over document title elements
+\usepackage{blindtext}              %% Generate dummy text
+\usepackage{multirow}               %% Multi-row cells in tables
+\usepackage{lastpage}               %% Reference the last page of the document
+\usepackage{afterpage}              %% Defer command execution to new page
+\usepackage{hyperref}               %% Hypertext in LaTeX (clickable links)
+
+\usepackage[toc, acronym]{glossaries} 			
+\makeglossaries	
+
+\usepackage[intoc]{nomencl}         %% uncomment if not used
+\makenomenclature
+
+%%-----------------------------------------------------------------------------
+%%  TikZ setup
+\usepackage{tikz}                   %% add more libraries if needed
+\usetikzlibrary{arrows,automata,shadows,positioning,decorations.pathreplacing,%
+    matrix,calc,backgrounds,patterns,shapes,shapes.gates.logic.IEC,%
+    intersections,through}
+
+%%-----------------------------------------------------------------------------
+%%  some common abbreviations using better LaTeX formatting
+\newcommand{\ie}{i.e., }
+\newcommand{\eg}{e.g., }
+\newcommand{\etc}{etc.\@ }
+
+%%-----------------------------------------------------------------------------
+%%  Definition of mathematical functions/operators for simpler syntax
+\DeclareMathOperator{\sign}{sign}
+\DeclareMathOperator{\Mod}{mod}
+\DeclareMathOperator{\artanh}{artanh}
+\DeclareMathOperator{\arcosh}{arcosh}
+\DeclareMathOperator{\arc}{arc}
+\DeclareMathOperator{\Arg}{Arg}
+\renewcommand{\Re}{\mathrm{Re}}
+\renewcommand{\Im}{\mathrm{Im}}
+\DeclareMathOperator{\spn}{span}
+\DeclareMathOperator{\defekt}{def}
+\DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator{\grad}{grad}
+\DeclareMathOperator{\argmin}{arg\,min}
+\DeclareMathOperator{\argmax}{arg\,max}
+
+%%-----------------------------------------------------------------------------
+%%  use the provided LaTeX-style file for your seminar paper
+\input{style.tex}
+\renewcommand{\arraystretch}{1.2}           %% space between lines in tables
+
+
+%%-----------------------------------------------------------------------------
+%%  modify accordingly
+\title{Title of Your Thesis \\  %
+    (Not too long!)}                        %% <= Title of your thesis
+\newcommand{\myauthor}{FirstName LastName}  %% <= your name 
+\author{\myauthor}
+\examiner{Prof. Dr.-Ing. Michael Mecking}
+\examinerb{Prof. Dr. Max Mustermann}        %% 2nd supervisor/examiner
+\advisor{Dr. Erika Musterfrau}              %% company advisor
+\registered{88.88.8888}                     %% date of registration 
+\newcommand{\mysubmitted}{99.99.9999}       %% date of submission
+\submitted{\mysubmitted}  
+
+%%-----------------------------------------------------------------------------
+%%  OK, let's go
+\begin{document}
+
+    %---- Prevent widow/orphan lines ------------------------------------------
+	\widowpenalty=10000
+	\clubpenalty=10000
+	\displaywidowpenalty=10000	
+
+%%-----------------------------------------------------------------------------
+%%  Titlepage
+    \maketitle
+    
+%%-----------------------------------------------------------------------------
+%%  Official declaration / Affidavit
+    \setcounter{page}{1}
+    \pagenumbering{Roman}	    %% roman page numbering to 1. Chapter
+    \input{affidavit}           %% <= you have to sign this! 
+
+%%-----------------------------------------------------------------------------
+%% Confidentiality clause -- optional! 
+ 	\include{confidentiality}   %% <= you also have to sign this!
+
+%%-----------------------------------------------------------------------------
+%%  Abstract
+    \input{abstract}            %% <= write your abstract 
+
+%%-----------------------------------------------------------------------------
+%%  Acknowledgements -- optional!
+	\include{acknowledgements}
+
+%%-----------------------------------------------------------------------------   
+%%  Table of Contents    
+    \tableofcontents
+    \newpage
+    
+%%-----------------------------------------------------------------------------   
+%%  List of Figures
+	\renewcommand*\listfigurename{List of Figures}  % change for German thesis
+    \addcontentsline{toc}{chapter}{List of Figures} % Add to TOC
+	\listoffigures
+	
+	% List of Tables
+	\renewcommand*\listtablename{List of Tables}    % change for German thesis
+    \addcontentsline{toc}{chapter}{List of Tables}  % Add to TOC
+	\listoftables
+
+%%-----------------------------------------------------------------------------   
+%%  Glossary (in case) and List of Acronyms    
+    \input{glossary}
+    \printnomenclature
+    \printglossaries
+
+%%-----------------------------------------------------------------------------
+%%  Main Body
+    \newpage
+    \pagenumbering{arabic} 	        %% arabic page numbering
+    \setcounter{page}{1}        
+    \input{chapter1.tex}            %% <= write chapters of thesis
+    \input{chapter2.tex}    
+    \input{chapter3.tex}        
+    \input{chapter4.tex}   
+    \input{chapter5.tex}
+    \input{chapter6.tex}
+
+%%-----------------------------------------------------------------------------
+%%  References
+    \newpage
+    %\addcontentsline{toc}{chapter}{Bibliography}
+    \bibliographystyle{IEEEtran}
+    \bibliography{references}       %% <= add your references.bib
+
+%%-----------------------------------------------------------------------------
+%%  Appendices
+    \newpage
+    \appendix
+    \input{appendix}                %% <= appendices if needed 
+
+\end{document}
