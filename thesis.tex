@@ -22,9 +22,12 @@
 
 \usepackage{tocbibind}              %% Ensures appendices, bibliograph appear in ToC
 \usepackage{algorithmic}            %% Number of commands for typesetting popular algorithmic constructs
-\usepackage{listings}               %% Typeset programming code within LaTeX
 \usepackage{longtable}              %% Write tables that continue to the next page
 \usepackage{float}                  %% Prevents repositioning of tables using [H]
+\usepackage{listings}               %% Typeset programming code within LaTeX
+\lstset{basicstyle=\ttfamily,       %% Use a typewriter font for code
+        breaklines=true,            %% Automatically break long lines
+        frame=single}               %% Add a border around code snippets
 
 \usepackage{amsmath,bm}             %% AMS math symbols and bold math
 \usepackage{amsbsy}                 %% Bold mathematics symbols where appropriate fonts exist
@@ -44,6 +47,10 @@
 \usepackage{lastpage}               %% Reference the last page of the document
 \usepackage{afterpage}              %% Defer command execution to new page
 \usepackage{hyperref}               %% Hypertext in LaTeX (clickable links)
+\hypersetup{colorlinks=true,
+            linkcolor=blue,
+            citecolor=red,
+            urlcolor=magenta}       %% Configure link colors
 
 \usepackage[toc, acronym]{glossaries} 			
 \makeglossaries	
