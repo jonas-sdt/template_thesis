@@ -1,0 +1,9 @@
+title: "Lorem Ipsum Dolor Sit Amet"
+issued_on: "dd.mm.yyyy"
+submitted_on: "dd.mm.yyyy"
+examiners:
+  first: "Prof. Dr.-Ing. 1"
+  second: "Prof. Dr.-Ing 2"
+company_advisor: ""
+own_name: "Max Mustermann"
+study_course: "Robotics"

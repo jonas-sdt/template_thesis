@@ -1,0 +1,8 @@
+- key: "imu"
+  short: "IMU"
+  plural: "IMUs"
+  long: "Intertia Measurement Unit"
+  longplural: "Intertia Measurement Units"
+- key: "tof"
+  short: "ToF"
+  long: "Time of Flight"
